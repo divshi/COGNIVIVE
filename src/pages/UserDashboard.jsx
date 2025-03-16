@@ -16,7 +16,7 @@ const UserDashboard = () => {
   const [showCallPopup, setShowCallPopup] = useState(false);
   const [showAppointmentPopup, setShowAppointmentPopup] = useState(false);
   const [showVRPopup, setShowVRPopup] = useState(false);
-  const [showVRAppointmentPopup, setShowVRAppointmentPopup] = useState(false);
+  const [showFeaturePopup, setShowFeaturePopup] = useState(null);
 
   const handleFeatureClick = (feature) => {
     if (feature.text === "Call & Recordings") {
@@ -25,6 +25,8 @@ const UserDashboard = () => {
       setShowAppointmentPopup(true);
     } else if (feature.text === "Virtual Reality") {
       setShowVRPopup(true);
+    } else if (feature.text === "Make Friends for Support") {
+      setShowFeaturePopup("friends");
     }
   };
 
@@ -44,19 +46,7 @@ const UserDashboard = () => {
           >
             <div className="overlay"></div>
             <p>{feature.icon} {feature.text}</p>
-            {feature.text === "Make Friends for Support" && (
-              <div className="shortcut-icons">
-                <button className="icon-button" onClick={() => alert("Starting Video Call...")}> 
-                  <FaVideo className="icon video" /> Video Call
-                </button>
-                <button className="icon-button" onClick={() => alert("Starting Voice Call...")}> 
-                  <FaMicrophone className="icon mic" /> Voice Call
-                </button>
-                <button className="icon-button" onClick={() => alert("Opening Chat...")}> 
-                  <FaComments className="icon chat" /> Chat
-                </button>
-              </div>
-            )}
+          
           </div>
         ))}
       </div>
@@ -67,8 +57,7 @@ const UserDashboard = () => {
           <h3>Choose Call Type</h3>
           <button onClick={() => alert("Starting Live Voice Call...")}>Live Voice</button>
           <button onClick={() => alert("Starting Live Video Call...")}>Live Video</button>
-          <button onClick={() => alert("Recording Voice...")}>Record Voice</button>
-          <button onClick={() => alert("Recording Video...")}>Record Video</button>
+          <button onClick={() => alert("Viewing Recordings...")}>View Recordings</button>
           <button onClick={() => setShowCallPopup(false)}>Close</button>
         </div>
       )}
@@ -79,6 +68,8 @@ const UserDashboard = () => {
           <h3>Book an Appointment</h3>
           <button className="psychologist" onClick={() => alert("Appointment booked with a Psychologist")}>Psychologist</button>
           <button className="psychiatrist" onClick={() => alert("Appointment booked with a Psychiatrist")}>Psychiatrist</button>
+          <button className="vr-psychologist" onClick={() => alert("VR Appointment booked with a Psychologist")}>VR Psychologist</button>
+          <button className="vr-psychiatrist" onClick={() => alert("VR Appointment booked with a Psychiatrist")}>VR Psychiatrist</button>
           <button onClick={() => setShowAppointmentPopup(false)}>Close</button>
         </div>
       )}
@@ -88,18 +79,24 @@ const UserDashboard = () => {
         <div className="popup">
           <h3>Virtual Reality Options</h3>
           <button onClick={() => alert("Viewing Recordings in VR Mode...")}>View Recording</button>
-          <button onClick={() => setShowVRAppointmentPopup(true)}>Book Appointment</button>
           <button onClick={() => setShowVRPopup(false)}>Close</button>
         </div>
       )}
 
-      {/* VR Book Appointment Popup */}
-      {showVRAppointmentPopup && (
+      {/* Make Friends for Support Popup */}
+      {showFeaturePopup === "friends" && (
         <div className="popup">
-          <h3>Book an Appointment in VR</h3>
-          <button className="psychologist" onClick={() => alert("VR Appointment booked with a Psychologist")}>Psychologist</button>
-          <button className="psychiatrist" onClick={() => alert("VR Appointment booked with a Psychiatrist")}>Psychiatrist</button>
-          <button onClick={() => setShowVRAppointmentPopup(false)}>Close</button>
+          <h3>Connect with Friends</h3>
+          <button className="icon-button" onClick={() => alert("Starting Video Call...")}> 
+            <FaVideo className="icon video" /> Video Call
+          </button>
+          <button className="icon-button" onClick={() => alert("Starting Voice Call...")}> 
+            <FaMicrophone className="icon mic" /> Voice Call
+          </button>
+          <button className="icon-button" onClick={() => alert("Opening Chat...")}> 
+            <FaComments className="icon chat" /> Chat
+          </button>
+          <button onClick={() => setShowFeaturePopup(null)}>Close</button>
         </div>
       )}
     </div>
