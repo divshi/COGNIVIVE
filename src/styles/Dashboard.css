@@ -98,6 +98,74 @@
     z-index: 1;
 }
 
+/* ✅ Shortcut Icons for "Make Friends for Support" */
+.shortcut-icons {
+    position: absolute;
+    bottom: 10px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    z-index: 2;
+}
+
+.shortcut-icons .icon-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+}
+
+.shortcut-icons .icon {
+    font-size: 1.5rem;
+    padding: 6px;
+    border-radius: 50%;
+}
+
+/* ✅ Adjust Icon Button Colors */
+.video {
+    background-color: #FF5733;
+}
+
+.mic {
+    background-color: #33C3FF;
+}
+
+.chat {
+    background-color: #5CB85C;
+}
+
+/* ✅ Hover Effects */
+.shortcut-icons .icon-button:hover {
+    transform: scale(1.1);
+}
+
+/* ✅ Responsive Fix */
+@media (max-width: 600px) {
+    .shortcut-icons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .shortcut-icons .icon-button {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .shortcut-icons .icon {
+        font-size: 1.3rem;
+    }
+}
+
+
 /* ✅ Responsive Fix for Smaller Screens */
 @media (max-width: 900px) {
     .features-grid {
