@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Dashboard.css";
 import { FaVideo, FaMicrophone, FaComments } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const features = [
   { text: "View Reports", icon: "📄", bg: "reports.jpg" },
@@ -17,8 +18,10 @@ const UserDashboard = () => {
   const [showAppointmentPopup, setShowAppointmentPopup] = useState(false);
   const [showVRPopup, setShowVRPopup] = useState(false);
   const [showFeaturePopup, setShowFeaturePopup] = useState(null);
-
+  const navigate = useNavigate(); 
+  
   const handleFeatureClick = (feature) => {
+    
     if (feature.text === "Call & Recordings") {
       setShowCallPopup(true);
     } else if (feature.text === "Book Appointment") {
@@ -27,6 +30,8 @@ const UserDashboard = () => {
       setShowVRPopup(true);
     } else if (feature.text === "Make Friends for Support") {
       setShowFeaturePopup("friends");
+    }else if (feature.text === "Play Games and Tests") {
+      navigate("/games-tests");  
     }
   };
 
