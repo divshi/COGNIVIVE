@@ -1,6 +1,6 @@
 .games-tests-container {
     text-align: center;
-    color: white;
+    color: #fff;
     padding: 20px;
     background-color: #0a112e;
     min-height: 80vh;
@@ -36,7 +36,7 @@
     padding: 10px 20px;
     border: none;
     background: #d36776;
-    color: white;
+    color: #fff;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
